@@ -39,13 +39,4 @@ for file in files_upload:
 
 
 
-# Step 4: Create a fake image using Pillow
-image = Image.new('RGB', (100, 100), color = (73, 109, 137))
-image_byte_array = io.BytesIO()
-image.save(image_byte_array, format='PNG')
 
-# Step 5: Upload the fake image to Google Cloud Storage
-blob = bucket.blob('fake_image.png')
-blob.upload_from_string(image_byte_array.getvalue(), content_type='image/png')
-
-print("Image uploaded successfully to Google Cloud Storage!")
